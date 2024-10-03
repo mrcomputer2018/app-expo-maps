@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Alert } from 'react-native';
+import { StyleSheet, Text, View, Alert, SafeAreaView } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 import axios from 'axios';
@@ -39,29 +39,37 @@ export default function App() {
         }
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <StatusBar style="auto" />
             <Text>Usando Maps</Text>
 
-            <MapView 
-                style={{ width: 340, height: 600 }}
-                initialRegion={{
-                    latitude: -7.5529504,
-                    longitude: -48.8832875,
-                    latitudeDelta: 1,
-                    longitudeDelta: 1
-                }}
-            >
-                <Marker 
-                    coordinate={{
+            { 
+                (latitude && longitude) ? 
+                (
+                <MapView 
+                    style={{ width: 340, height: 600 }}
+                    initialRegion={{
                         latitude: -7.5529504,
-                        longitude: -48.8832875
+                        longitude: -48.8832875,
+                        latitudeDelta: 1,
+                        longitudeDelta: 1
                     }}
-                    title="Pokemon"
-                    description="Pokemon encontrado"
-                />
-            </MapView>
-        </View>
+                >
+                    <Marker 
+                        coordinate={{
+                            latitude: -7.5529504,
+                            longitude: -48.8832875
+                        }}
+                        title="Pokemon"
+                        description="Pokemon encontrado"
+                    />
+                </MapView>
+                ) : 
+                (
+                    <Text>Carregando...</Text>
+                )
+            }
+        </SafeAreaView>
     );
 }
 
