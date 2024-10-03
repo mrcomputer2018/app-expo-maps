@@ -33,10 +33,10 @@ export default function App() {
             setLatitude(myLocation.coords.latitude)
             setLongitude(myLocation.coords.longitude)
 
-            } else {
-                Alert.alert("AVISO", "Sem a permissão, não conseguimos pegar a sua localização :(")
-            }
+        } else {
+            Alert.alert("AVISO", "Sem a permissão, não conseguimos pegar a sua localização :(")
         }
+    }
 
     return (
         <SafeAreaView style={styles.container}>
