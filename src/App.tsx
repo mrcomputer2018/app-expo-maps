@@ -20,7 +20,7 @@ export default function App() {
         .then((response) => {
             setPokemons(response.data)
         })
-         .catch(() => Alert.alert("Houve um erro ao pegar os pokemons"))
+        .catch(() => Alert.alert("Houve um erro ao pegar os pokemons"))
     }, [])
 
     async function getCurrentLocation() {
